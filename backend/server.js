@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import restaurants from "./api/restaurants.route.js";
+import restaurants from "./API-routes/restaurants.route.js";
 
 const app = express();
 //apply cors middleware to app to allow for browser to browser requests
