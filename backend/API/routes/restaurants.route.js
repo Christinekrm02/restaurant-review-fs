@@ -1,6 +1,6 @@
 //Routes go here
 import express from "express";
-import RestaurantsController from "restaurants.controller.js";
+import RestaurantsController from "../controllers/restaurants.controller.js";
 
 const router = express.Router();
 

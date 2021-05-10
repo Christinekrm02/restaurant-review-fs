@@ -5,7 +5,7 @@ let restaurants;
 export default class restaurantsDAO {
   //if restaurant information is already provided then return information
   static async injectDB(connection) {
-    if (resturants) {
+    if (restaurants) {
       return;
     }
     //if information is not already filled, then connect to restaurant db using information provided
@@ -36,11 +36,11 @@ export default class restaurantsDAO {
       //eg. we can search restaurant by name, etc
       if ("name" in filters) {
         //searches text in db for particular name
-        //function will be set up in mongodb atlas (online)
+        //functionality will be set up in mongodb atlas (online)
         //there is no db field for this query
-        query = { $text: { search: filters["name"] } };
+        query = { $text: { $search: filters["name"] } };
       } else if ("cuisine" in filters) {
-        //"if cuisine equals cuisine that is searched"
+        //"if cuisine equals cuisine name that is searched"
         query = { cuisine: { $eq: filters["cuisine"] } };
       } else if ("zipcode" in filters) {
         query = { "address.zipcode": { $eq: filters["zipcode"] } };
@@ -51,7 +51,7 @@ export default class restaurantsDAO {
     try {
       cursor = await restaurants.find(query);
     } catch (error) {
-      console.error(`Unable to issue commane, ${error}`);
+      console.error(`Unable to issue command, ${error}`);
       return { restaurantsList: [], totalNumRestaurants: 0 };
     }
     //if no error, return restaurants but with a certain amount per page
