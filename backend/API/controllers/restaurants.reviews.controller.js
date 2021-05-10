@@ -1,6 +1,6 @@
-import ReviewsDAO from "../../DAO/restaurant.reviewsDAO.js";
+import RestaurantReviewsDAO from "../../DAO/restaurant.reviewsDAO.js";
 
-export default class RestaurantReviewsController {
+export default class RestaurantReviewController {
   static async apiPostReview(req, res, next) {
     try {
       const restaurantId = req.body.restaurant_id;
@@ -25,7 +25,7 @@ export default class RestaurantReviewsController {
 
   //check if length of characters in review has changed
   //length check signifies an updated review
-  static async UpdateReview(req, res, next) {
+  static async apiUpdateReview(req, res, next) {
     try {
       const reviewId = req.body.review_id;
       const text = request.body.text;

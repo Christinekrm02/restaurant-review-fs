@@ -1,5 +1,5 @@
 import mongodb from "mongodb";
-const ObjectId = mongodb.ObjectID;
+const ObjectId = mongodb.ObjectId;
 
 let reviews;
 
@@ -18,7 +18,7 @@ export default class RestaurantReviewsDAO {
     }
   }
 
-  static async assReview(restaurantId, user, review, date) {
+  static async addReview(restaurantId, user, review, date) {
     try {
       const reviewDoc = {
         name: user.name,
@@ -34,7 +34,7 @@ export default class RestaurantReviewsDAO {
     }
   }
 
-  static updateReview(reviewId, userId, text, date) {
+  static async updateReview(reviewId, userId, text, date) {
     try {
       const updateResponse = await reviews.updateOne(
         //checkpoints are if the userId and reviewId belong to the person who created the review
